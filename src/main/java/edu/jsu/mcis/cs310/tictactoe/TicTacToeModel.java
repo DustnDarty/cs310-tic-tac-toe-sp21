@@ -79,10 +79,17 @@ public class TicTacToeModel {
         // INSERT YOUR CODE HERE
         boolean test = false;
         
-        
-        
-        return false; // this is a stub; you may need to remove it later!
-        
+        if((xTurn == true) && (isValidSquare(row, col) == true) && (isSquareMarked(row, col) == false)){
+            xTurn = false;
+            board[row][col] = TicTacToeSquare.X;
+            test = true;
+        }
+        else if((xTurn == false) && (isValidSquare(row, col) == true) && (isSquareMarked(row, col) == false)){
+            xTurn = true;
+            board[row][col] = TicTacToeSquare.O;
+            test = true;
+        }          
+        return test; // this is a stub; you may need to remove it later!
     }
     
     /**
