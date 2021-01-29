@@ -77,6 +77,9 @@ public class TicTacToeModel {
     public boolean makeMark(int row, int col) {
         
         // INSERT YOUR CODE HERE
+        boolean test = false;
+        
+        
         
         return false; // this is a stub; you may need to remove it later!
         
@@ -94,9 +97,12 @@ public class TicTacToeModel {
     private boolean isValidSquare(int row, int col) {
         
         // INSERT YOUR CODE HERE
-        
-        return false; // this is a stub; you may need to remove it later!
-        
+        if ((row < dimension & row >= 0) && (col < dimension & col >=0)){
+            return true;
+        }
+        else{
+            return false; // this is a stub; you may need to remove it later!
+        }
     }
     
     /**
