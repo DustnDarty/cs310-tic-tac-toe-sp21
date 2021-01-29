@@ -116,9 +116,12 @@ public class TicTacToeModel {
     private boolean isSquareMarked(int row, int col) {
                 
         // INSERT YOUR CODE HERE
-        
-        return false; // this is a stub; you may need to remove it later!
-            
+        if (board[row][col] == TicTacToeSquare.EMPTY){
+            return true;
+        }
+        else{
+            return false; // this is a stub; you may need to remove it later!
+        }    
     }
     
     /**
