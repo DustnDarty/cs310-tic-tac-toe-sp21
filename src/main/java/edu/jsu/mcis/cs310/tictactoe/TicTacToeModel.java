@@ -160,9 +160,18 @@ public class TicTacToeModel {
     public TicTacToeState getState() {
         
         // INSERT YOUR CODE HERE
-        
-        return null; // this is a stub; you should remove it later!
-        
+        if(isMarkWin(TicTacToeSquare.X)){
+            return TicTacToeState.X;
+        }
+        else if(isMarkWin(TicTacToeSquare.O)){
+            return TicTacToeState.O;
+        }
+        else if(isTie()){
+            return TicTacToeState.TIE;
+        }
+        else{
+            return TicTacToeState.NONE; 
+        }
     }
     
     /**
