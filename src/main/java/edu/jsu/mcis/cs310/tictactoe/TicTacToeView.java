@@ -39,10 +39,22 @@ public class TicTacToeView {
     */
     public TicTacToeMove getNextMove(boolean isXTurn) {
         
-        // INSERT YOUR CODE HERE (refer to the example output on Canvas!)
+        // INSERT YOUR CODE HERE (refer to the example output on Canvas!) 
+        if(isXTurn == true){
+            System.out.println("Player 1 (X) Move: ");
+            System.out.println("Enter the row and column numbers, seperated by a space: ");
+        }
+        else{
+            System.out.println("Player 2 (O) Move: ");
+            System.out.print("Enter the row and column numbers, seperated by a space: ");
+        }
         
-        return null; // this is a stub; you should remove it later!
-
+        int row = keyboard.nextInt();
+        int col = keyboard.nextInt();
+            
+        TicTacToeMove move = new TicTacToeMove(row, col);
+        return move;
+       //return new TicTacToeMove(row, col);
     }
     
     /**

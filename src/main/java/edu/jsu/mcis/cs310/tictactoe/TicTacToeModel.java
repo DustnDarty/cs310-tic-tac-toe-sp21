@@ -53,8 +53,8 @@ public class TicTacToeModel {
         /* Initialize board (fill with TicTacToeSquare.EMPTY) */
         
         // INSERT YOUR CODE HERE
-        for(int i= 0; i < (dimension); ++i){
-            for(int j = 0; j < (dimension); ++j){
+        for(int i= 0; i < (dimension); i++){
+            for(int j = 0; j < (dimension); j++){
                 board[i][j] = TicTacToeSquare.EMPTY;
             }
         }
@@ -77,19 +77,19 @@ public class TicTacToeModel {
     public boolean makeMark(int row, int col) {
         
         // INSERT YOUR CODE HERE
-        boolean test = false;
-        
         if((xTurn == true) && (isValidSquare(row, col) == true) && (isSquareMarked(row, col) == false)){
-            xTurn = false;
+            xTurn = !xTurn;
             board[row][col] = TicTacToeSquare.X;
-            test = true;
+            return true;
         }
         else if((xTurn == false) && (isValidSquare(row, col) == true) && (isSquareMarked(row, col) == false)){
-            xTurn = true;
+            xTurn = !xTurn;
             board[row][col] = TicTacToeSquare.O;
-            test = true;
-        }          
-        return test; // this is a stub; you may need to remove it later!
+            return true;
+        }  
+        else{
+        return false;
+        }// this is a stub; you may need to remove it later!
     }
     
     /**
@@ -185,9 +185,75 @@ public class TicTacToeModel {
     private boolean isMarkWin(TicTacToeSquare mark) {
         
         // INSERT YOUR CODE HERE
+        int over = 0;
+        int down = 0;
+        int fwrdSlash = 0;
+        int bckSlash = 0;
         
+        //over check
+        for(int i = 0; i < dimension; i++){
+            if(over != dimension){
+               over = 0;
+                for(int j = 0; j < dimension; j++){
+                    if(board[i][j] == mark){
+                        over = over++;
+                    } 
+                }
+            }
+        }
+        
+        //down check
+        for(int j = 0; j < dimension; j++){
+            if(down != dimension){
+               down = 0;
+                for(int i = 0; i < dimension; i++){
+                    if(board[i][j] == mark){
+                        down = down++;
+                    } 
+                }
+            }
+        }
+        
+        //fwrdSlash check
+        for(int i = 0; i < dimension; i++){
+            if(fwrdSlash != dimension){
+               fwrdSlash = 0;
+                for(int j = 0; j < dimension; j++){
+                    if(board[j][dimension-j - 1] == mark){
+                        fwrdSlash = fwrdSlash++;
+                    } 
+                }
+            }
+        }
+        
+        //bckSlash check
+        for(int i = 0; i < dimension; i++){
+            if(bckSlash != dimension){
+               bckSlash = 0;
+                for(int j = 0; j < dimension; j++){
+                    if(board[j][j] == mark){
+                        bckSlash = bckSlash++;
+                    } 
+                }
+            }
+        }
+        
+        //return winner
+        if(over == dimension){
+            return true;
+        }
+        else if(down == dimension){
+            return true;
+        }
+        else if(fwrdSlash == dimension){
+            return true;
+        }
+        else if(bckSlash == dimension){
+            return true;
+        }
+        else{
         return false; // this is a stub; you may need to remove it later!
-        
+        }
     }
     
     /**
@@ -199,9 +265,21 @@ public class TicTacToeModel {
     private boolean isTie() {
         
         // INSERT YOUR CODE HERE
-        
+    int draw = 0;
+
+    for(int i = 0; i < dimension; i++){
+        for(int j = 0; j < dimension; j++){
+            if(board[i][j] == TicTacToeSquare.EMPTY){
+                draw++;
+            }
+        }
+    }
+    if(draw == 0){
+        return true;
+    }
+    else{
         return false; // this is a stub; you may need to remove it later!
-        
+        }
     }
 
     /**
@@ -257,6 +335,26 @@ public class TicTacToeModel {
         StringBuilder output = new StringBuilder();
         
         // INSERT YOUR CODE HERE
+        output.append("  ");
+        for(int i = 0; i < dimension; i++){
+            output.append(i);
+        }
+        output.append("\n");
+        for(int i = 0; i < dimension; i++){
+            for(int j = 0; j < dimension; j++){
+                if(j == 0){
+                    output.append(i);
+                    output.append(" ");
+                    output.append(board[i][j]);
+                }
+                else if(j > 0){
+                    output.append(board[i][j]);
+                }
+                if(j == dimension - 1){
+                    output.append("\n");
+                }
+            }          
+        }
         
         return output.toString();
         
