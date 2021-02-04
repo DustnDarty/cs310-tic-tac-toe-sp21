@@ -53,9 +53,9 @@ public class TicTacToeController {
                 int row = move.getRow();
                 int col = move.getCol();
             
-            model.makeMark(row, col);
+            boolean mark = model.makeMark(row, col);
            
-            if(!model.makeMark(move.getRow(), move.getCol())){
+            if (mark == false){//(!model.makeMark(move.getRow(), move.getCol())){
                 view.showInputError();
             }
         }

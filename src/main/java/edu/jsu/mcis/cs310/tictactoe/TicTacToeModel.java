@@ -124,10 +124,10 @@ public class TicTacToeModel {
                 
         // INSERT YOUR CODE HERE
         if (board[row][col] == TicTacToeSquare.EMPTY){
-            return true;
+            return false;
         }
         else{
-            return false; // this is a stub; you may need to remove it later!
+            return true; // this is a stub; you may need to remove it later!
         }    
     }
     
@@ -185,75 +185,56 @@ public class TicTacToeModel {
     private boolean isMarkWin(TicTacToeSquare mark) {
         
         // INSERT YOUR CODE HERE
-        int over = 0;
-        int down = 0;
-        int fwrdSlash = 0;
-        int bckSlash = 0;
         
         //over check
         for(int i = 0; i < dimension; i++){
-            if(over != dimension){
-               over = 0;
-                for(int j = 0; j < dimension; j++){
-                    if(board[i][j] == mark){
-                        over = over++;
-                    } 
+            for(int j = 0; j < dimension; j++){
+                if(board[i][j] == mark){
+                    if(j == dimension - 1){
+                        return true;
+                    }   
                 }
             }
         }
         
         //down check
         for(int j = 0; j < dimension; j++){
-            if(down != dimension){
-               down = 0;
-                for(int i = 0; i < dimension; i++){
-                    if(board[i][j] == mark){
-                        down = down++;
+            for(int i = 0; i < dimension; i++){
+                if(board[i][j] == mark){
+                    if(i == dimension - 1){
+                        return true;
                     } 
-                }
+                }        
             }
         }
         
         //fwrdSlash check
         for(int i = 0; i < dimension; i++){
-            if(fwrdSlash != dimension){
-               fwrdSlash = 0;
+               int fwrdSlash = 0;
                 for(int j = 0; j < dimension; j++){
                     if(board[j][dimension-j - 1] == mark){
                         fwrdSlash = fwrdSlash++;
                     } 
+                    if(fwrdSlash == dimension - 1){
+                        return true;
+                    }
                 }
-            }
         }
         
         //bckSlash check
         for(int i = 0; i < dimension; i++){
-            if(bckSlash != dimension){
-               bckSlash = 0;
+               int bckSlash = 0;
                 for(int j = 0; j < dimension; j++){
                     if(board[j][j] == mark){
                         bckSlash = bckSlash++;
                     } 
+                    if(bckSlash == dimension - 1){
+                        return true;
+                    }
                 }
-            }
         }
-        
-        //return winner
-        if(over == dimension){
-            return true;
-        }
-        else if(down == dimension){
-            return true;
-        }
-        else if(fwrdSlash == dimension){
-            return true;
-        }
-        else if(bckSlash == dimension){
-            return true;
-        }
-        else{
         return false; // this is a stub; you may need to remove it later!
-        }
+        
     }
     
     /**
