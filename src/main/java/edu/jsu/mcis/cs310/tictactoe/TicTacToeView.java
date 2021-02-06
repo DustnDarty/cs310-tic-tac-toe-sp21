@@ -5,7 +5,7 @@ import java.util.Scanner;
 /**
 * TicTacToeView implements a console-based View for the Tic-Tac-Toe game.
 *
-* @author  Your Name
+* @author  Dustin Daugherty
 * @version 1.0
 */
 public class TicTacToeView {
@@ -54,7 +54,6 @@ public class TicTacToeView {
             
         TicTacToeMove move = new TicTacToeMove(row, col);
         return move;
-       //return new TicTacToeMove(row, col);
     }
     
     /**

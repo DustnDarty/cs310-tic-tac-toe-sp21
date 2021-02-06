@@ -3,7 +3,7 @@ package edu.jsu.mcis.cs310.tictactoe;
 /**
 * TicTacToeModel implements the Model for the Tic-Tac-Toe game.
 *
-* @author  Your Name
+* @author  Dustin Daugherty
 * @version 1.0
 */
 public class TicTacToeModel {
@@ -185,56 +185,59 @@ public class TicTacToeModel {
     private boolean isMarkWin(TicTacToeSquare mark) {
         
         // INSERT YOUR CODE HERE
-        
+        int over = 0;
         //over check
         for(int i = 0; i < dimension; i++){
-            for(int j = 0; j < dimension; j++){
-                if(board[i][j] == mark){
-                    if(j == dimension - 1){
-                        return true;
-                    }   
+            if (over != dimension){
+                over = 0;
+                for(int j = 0; j < dimension; j++){
+                    if(board[i][j] == mark){                        
+                        over++;                           
+                    }
+                }    
+                if (over == dimension){
+                    return true;
+                }
+            }    
+        }
+
+        int down = 0;
+        //down check
+        for(int j = 0; j < dimension; j++){
+            if (down != dimension){
+                down = 0;
+                for(int i = 0; i < dimension; i++){
+                    if(board[i][j] == mark){
+                        down++;
+                    }
+                }
+                if (down == dimension){
+                    return true;
                 }
             }
         }
         
-        //down check
+        int bckSlash = -1;
+        //bckSlash check              
         for(int j = 0; j < dimension; j++){
-            for(int i = 0; i < dimension; i++){
-                if(board[i][j] == mark){
-                    if(i == dimension - 1){
-                        return true;
-                    } 
-                }        
+            if(board[j][j] == mark){
+                bckSlash++;
+            } 
+            if(bckSlash == dimension - 1){
+                return true;
             }
         }
         
         //fwrdSlash check
         for(int i = 0; i < dimension; i++){
-               int fwrdSlash = 0;
-                for(int j = 0; j < dimension; j++){
-                    if(board[j][dimension-j - 1] == mark){
-                        fwrdSlash = fwrdSlash++;
-                    } 
-                    if(fwrdSlash == dimension - 1){
-                        return true;
-                    }
-                }
+            if(board[i][dimension -1 -i] != mark){
+                break;
+            }
+            if(i == dimension - 1){
+                return true;
+            } 
         }
-        
-        //bckSlash check
-        for(int i = 0; i < dimension; i++){
-               int bckSlash = 0;
-                for(int j = 0; j < dimension; j++){
-                    if(board[j][j] == mark){
-                        bckSlash = bckSlash++;
-                    } 
-                    if(bckSlash == dimension - 1){
-                        return true;
-                    }
-                }
-        }
-        return false; // this is a stub; you may need to remove it later!
-        
+        return false; // this is a stub; you may need to remove it later!       
     }
     
     /**
@@ -316,6 +319,7 @@ public class TicTacToeModel {
         StringBuilder output = new StringBuilder();
         
         // INSERT YOUR CODE HERE
+        output.append("\n");
         output.append("  ");
         for(int i = 0; i < dimension; i++){
             output.append(i);
@@ -334,7 +338,7 @@ public class TicTacToeModel {
                 if(j == dimension - 1){
                     output.append("\n");
                 }
-            }          
+            }
         }
         
         return output.toString();
