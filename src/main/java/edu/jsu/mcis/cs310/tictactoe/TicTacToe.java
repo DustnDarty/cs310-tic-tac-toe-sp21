@@ -3,8 +3,8 @@ package edu.jsu.mcis.cs310.tictactoe;
 /**
 * TicTacToe implements the main class for the Tic-Tac-Toe game.
 *
-* @author  Your Name
-* @version 1.0
+* @author  Dustin Daugherty
+* @version 2.0
 */
 public class TicTacToe {
     
