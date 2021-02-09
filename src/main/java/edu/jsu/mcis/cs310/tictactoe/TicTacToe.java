@@ -13,6 +13,7 @@ public class TicTacToe {
      * the user does not specify a different dimension for the game board, this
      * dimension is used instead.  The default dimension is currently set to 3.
      */
+    
     public static final int DEFAULT_DIMENSION = 3;
     
     /**

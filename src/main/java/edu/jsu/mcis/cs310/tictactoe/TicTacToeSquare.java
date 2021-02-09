@@ -7,6 +7,7 @@ package edu.jsu.mcis.cs310.tictactoe;
 * @author  Dustin Daugherty
 * @version 2.0
 */
+
 public enum TicTacToeSquare {
     
     /**

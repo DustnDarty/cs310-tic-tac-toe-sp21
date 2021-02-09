@@ -71,7 +71,8 @@ public class TicTacToeController implements ActionListener {
     * method, which implements the ActionListener interface.
     * 
     * @param event  a reference to the GUI component which initiated the event
-    */    
+    */ 
+    
     @Override
     public void actionPerformed(ActionEvent event) {
         
