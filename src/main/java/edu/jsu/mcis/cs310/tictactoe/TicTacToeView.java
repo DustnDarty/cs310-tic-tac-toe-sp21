@@ -117,7 +117,11 @@ public class TicTacToeView extends JPanel {
     public void disableSquares() {
     
         // INSERT YOUR CODE HERE
-            
+        for(int i = 0; i < board.length; i++) {
+            for(int j = 0; j < board.length; j++){
+                this.board[i][j].setEnabled(false);
+            }
+        }        
     }
         
     /**
